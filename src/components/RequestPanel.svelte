@@ -1,5 +1,5 @@
 <script>
-  let { order = $bindable(), message = $bindable(""), loading = false, ondecide } = $props();
+  let { order = $bindable(), message = $bindable(""), loading = false, ondecide, initialPicked = 0 } = $props();
 
   // Worked examples. The notes are measured facts from eval/ (P06, P15), not claims.
   const examples = [
@@ -29,7 +29,7 @@
     },
   ];
 
-  let picked = $state(0);
+  let picked = $state(initialPicked);
 
   function pick(i) {
     picked = i;

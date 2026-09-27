@@ -5,23 +5,20 @@
   import RequestPanel from "./components/RequestPanel.svelte";
   import Scorecard from "./components/Scorecard.svelte";
   import { fetchEngineStatus, requestDecision } from "./lib/apiClient.js";
+  import EXAMPLE from "./lib/worked-example.json";
 
   let policy = $state(REFERENCE_POLICY);
-  let order = $state({
-    order_total: 50,
-    days_since_delivery: 5,
-    is_digital: false,
-    download_failed: false,
-    paid_with_store_credit: false,
-  });
-  let message = $state("Hi, this jacket doesn't fit. Can I get a refund? Delivered 5 days ago.");
+  // Opens on a real SERV decision, recorded from the live site and labelled as such.
+  let order = $state({ ...EXAMPLE.order });
+  let message = $state(EXAMPLE.message);
 
-  let decision = $state(null);
+  let decision = $state(EXAMPLE.decision);
+  let isExample = $state(true);
   let loading = $state(false);
   let error = $state(null);
   let engine = $state(null);
   let elapsed = $state(0);
-  let decidedFor = $state("");
+  let decidedFor = $state(JSON.stringify({ policy: REFERENCE_POLICY, order: EXAMPLE.order, message: EXAMPLE.message }));
   const snapshot = () => JSON.stringify({ policy, order, message });
   let stale = $derived(Boolean(decision) && decidedFor !== snapshot());
 
@@ -33,6 +30,7 @@
     loading = true;
     error = null;
     decision = null;
+    isExample = false;
     elapsed = 0;
     const started = Date.now();
     const tick = setInterval(() => (elapsed = Math.round((Date.now() - started) / 1000)), 1000);
@@ -69,10 +67,10 @@
 
     <section class="tool">
       <div class="tool-request">
-        <RequestPanel bind:order bind:message {loading} ondecide={handleDecide} />
+        <RequestPanel bind:order bind:message {loading} ondecide={handleDecide} initialPicked={1} />
       </div>
       <div class="tool-sheet" id="sheet">
-        <ProofSheet bind:policy {decision} {loading} {error} {elapsed} {stale} />
+        <ProofSheet bind:policy {decision} {loading} {error} {elapsed} {stale} example={isExample ? EXAMPLE.recorded_at : null} />
       </div>
     </section>
 

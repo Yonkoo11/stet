@@ -1,0 +1,43 @@
+{
+ "recorded_at": "2026-09-27T23:04Z",
+ "order": {
+  "order_total": 20,
+  "days_since_delivery": 45,
+  "is_digital": true,
+  "download_failed": true,
+  "paid_with_store_credit": false
+ },
+ "message": "The ebook download failed, I want my 20 back. I bought it a while ago but only tried it now.",
+ "decision": {
+  "decision": "decline",
+  "refund_amount": 0,
+  "refund_to": "none",
+  "rule_path": [
+   {
+    "step": "This sentence applies because 45 days have passed since delivery, which exceeds the 30-day limit.",
+    "policy_quote": "Refunds are allowed within 30 days of delivery."
+   },
+   {
+    "step": "This sentence applies because it is a digital good and the download failed, but the 30-day window has already passed.",
+    "policy_quote": "Digital goods are non-refundable unless the download failed."
+   },
+   {
+    "step": "This sentence does not apply because store credit was not used.",
+    "policy_quote": "Orders paid with store credit are refunded to store credit only."
+   },
+   {
+    "step": "This sentence does not apply because the requested amount does not exceed 200.",
+    "policy_quote": "Any refund over 200 needs a manager to approve it before it is issued."
+   }
+  ],
+  "customer_reply": "We cannot process your refund because your order was delivered 45 days ago, which is outside our 30-day refund window.",
+  "missing_info": [],
+  "injection_detected": false,
+  "engine": "serv:gemini-3.5-flash-lite-serv-kronos-multipath+noguard",
+  "usage": {
+   "completion_tokens": 353,
+   "prompt_tokens": 419,
+   "total_tokens": 772
+  }
+ }
+}

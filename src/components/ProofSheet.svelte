@@ -1,7 +1,7 @@
 <script>
   import { markSentences } from "../lib/sentences.js";
 
-  let { policy = $bindable(""), decision = null, loading = false, error = null, elapsed = 0, stale = false } = $props();
+  let { policy = $bindable(""), decision = null, loading = false, error = null, elapsed = 0, stale = false, example = null } = $props();
 
   let editing = $state(false);
 
@@ -36,6 +36,9 @@
     {/if}
   </header>
 
+  {#if example && !stale && !loading && !editing}
+    <p class="example-note">A worked example: a real SERV decision on the live site, recorded {example.slice(0, 10)}. Pick another request, or press Decide to run this one yourself.</p>
+  {/if}
   {#if stale && decision && !loading && !editing}
     <p class="stale">This decision was for the previous request. Press Decide to check the one you've changed.</p>
   {/if}
