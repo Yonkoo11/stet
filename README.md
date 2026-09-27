@@ -5,13 +5,13 @@
 ![SERV on](https://img.shields.io/badge/SERV_on-20%2F20_policy_cases%2C_0_wrong-b42318)
 [![tests](https://github.com/Yonkoo11/stet/actions/workflows/tests.yml/badge.svg)](https://github.com/Yonkoo11/stet/actions/workflows/tests.yml)
 ![SERV off](https://img.shields.io/badge/SERV_off-19%2F20%2C_1_wrong-1c1a17)
-[![live](https://img.shields.io/badge/live-stet--yonkos--projects-b42318)](https://stet-yonkos-projects-c3276a8b.vercel.app)
+[![live](https://img.shields.io/badge/live-stet--refunds.vercel.app-b42318)](https://stet-refunds.vercel.app)
 
 ### Refunds that follow your policy, exactly.
 
 **A shop writes its refund policy in plain English. Stet decides each refund request from it on OpenServ's SERV Reasoning, quotes the policy sentences it relied on, and sends anything it can't settle to a person. On OpenServ's own example policy, the same model went from 1 wrong refund decision to 0 with SERV on.**
 
-**[ Live ↗ ](https://stet-yonkos-projects-c3276a8b.vercel.app)** · **[ Verify it yourself ↗ ](#verify-it-yourself-in-60-seconds)** · **[ The eval results ↗ ](eval/)**
+**[ Live ↗ ](https://stet-refunds.vercel.app)** · **[ Verify it yourself ↗ ](#verify-it-yourself-in-60-seconds)** · **[ The eval results ↗ ](eval/)**
 
 Built for SERV Hackathon Edition 01 (Open Track).
 
@@ -88,7 +88,7 @@ node -e 'for (const f of ["plain", "serv-guard", "serv-noguard"]) { const r = re
 # → serv-noguard  20/20 wrong: 0
 
 # The live site is running on SERV:
-curl -s https://stet-yonkos-projects-c3276a8b.vercel.app/api/engine-status
+curl -s https://stet-refunds.vercel.app/api/engine-status
 # → {"engine":"serv"}
 ```
 
