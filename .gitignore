@@ -1,0 +1,25 @@
+# Secrets
+.env
+.env.*
+.env*.local
+!.env.example
+.envrc
+*.key
+*.pem
+secrets/
+
+# Build artifacts
+node_modules/
+dist/
+build/
+*.log
+
+# Local
+ai/
+.private/
+.claude/
+.vercel
+.DS_Store
+.idea/
+.vscode/
+*.swp
