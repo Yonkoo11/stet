@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+ai/
+video/
+brand/
+design/
+company/
+CLAUDE.md
+SECURITY.md
+.vercel
+.deploy-state.json
+node_modules/
+dist/
