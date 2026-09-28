@@ -4,7 +4,7 @@
 // logic itself lives in lib/decide.js so it's identical to the api/ and
 // eval/ code paths.
 
-import { Agent } from "@openserv-labs/sdk";
+import { Agent, run } from "@openserv-labs/sdk";
 import { z } from "zod";
 import { decide } from "../lib/decide.js";
 
@@ -57,6 +57,7 @@ export function createAgent() {
 // it for tests never tries to connect to the OpenServ platform.
 const isMain = process.argv[1] && import.meta.url === `file://${process.argv[1]}`;
 if (isMain) {
-  const agent = createAgent();
-  agent.start();
+  // run() starts the agent and, unless DISABLE_TUNNEL is set, opens the SDK's tunnel to
+  // agents-proxy.openserv.ai, so the platform can reach this process without a public URL.
+  await run(createAgent());
 }

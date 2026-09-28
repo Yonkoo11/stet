@@ -147,7 +147,7 @@ Every entry point goes through `decide()` in `lib/decide.js`, and every decision
 | Prompt guard | Measured negative: it refused 2 ordinary customers. Off by default. |
 | Issuing refunds | Not done, and not claimed. Stet decides; a person or the shop's own system pays. |
 | Telegram bot | Built and unit-tested with a mocked Telegram. Not connected to a live bot token. |
-| OpenServ marketplace listing | The SDK agent is built (`agent/`). Not registered on the platform yet. |
+| OpenServ agent listing | Registered on platform.openserv.ai as "Stet" (External Agent, 2026-09-28) and connected through the SDK tunnel. It answers only while `node --env-file=.env agent/index.js` runs on the owner's machine; always-on hosting is not done. |
 | Rate limit on the public endpoint | Per server instance, in memory. It slows abuse; it is not a quota. |
 
 ## Tech stack
